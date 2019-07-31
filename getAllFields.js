@@ -25,3 +25,17 @@ rec.getFields().map(function(result) {
 		return ["", result];
     }
 }).join("\n");
+
+// Step 4b: Get all sublist fields
+
+rec.getSublistFields({
+  sublistId: "item"}).forEach(function(result) {
+    var f = rec.getSublistField({
+        sublistId: "item",
+        fieldId: result,
+  line: 0
+    });
+  if(!f) return;
+  fieldInfo.push([f.label, f.id]);
+});
+
